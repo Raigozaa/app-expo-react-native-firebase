@@ -46,7 +46,6 @@ const IniciarSesion = (props) => {
             
         } else {
             
-            //props.navigation.navigate('FoodList')           // QUITARRRRRRRRRRRRRRRRRRRRRRR
             
             for (let i = 0; i < usuarios.length; i++) {
                 
