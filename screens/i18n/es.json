@@ -1,0 +1,30 @@
+{
+    "home.btnIdioma": "Language: English",
+    "home.tInicio": "Bienvenido a Recetap",
+    "home.sInicio": "¡Inicia sesion para ver las mejores recetas!",
+    "home.btnIniciarS":"Iniciar sesión",
+    "home.btnCrearC": "Crear cuenta",
+
+    "home.tRegistro": "Regístrate ahora",
+    "home.tText": "¡Las mejores recetas!",
+    "home.btnRegistrar": "Registrarme",
+
+    "home.iUserInicio":"Usuario",
+    "home.iPassInicio":"Contraseña",
+    "home.tRecetaNueva":"Crear receta nueva",
+    "home.iURI":"URI imagen",
+    "home.iTitulo":"Título de la receta",
+    "home.iDecrip":"Descripción",
+    "home.iPasos":"Pasos",
+    "home.btnCrearReceta":"Crear receta",
+
+    "home.alUser": "Por favor llenar campo usuario",
+    "home.alPassw": "Por favor llenar campo contraseña",
+    "home.alErrorU": "Usuario o contraseña incorrecta",
+    "home.alExit": "Registro realizado exitosamente!",
+
+    "home.btnAct": "Actualizar receta",
+    "home.btnBorr": "Borrar receta"
+    
+}
+

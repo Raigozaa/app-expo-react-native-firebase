@@ -2,8 +2,17 @@ import React, { useState } from 'react';
 import { View, Button, ScrollView, StyleSheet } from 'react-native';
 import firebase from '../database/firebase';
 import { TextInput } from "react-native-gesture-handler";
+import { useTranslation } from "react-i18next";
+import './i18n'
+import i18next from "./i18n";
 
 const CrearReceta = (props) => {
+
+
+  const { t } = useTranslation()
+  const [languaje, setLanguaje] = useState('en')
+
+
 
   const [state, setState] = useState({
       titulo: '',
@@ -42,32 +51,32 @@ const CrearReceta = (props) => {
 
       <View style={styles.inputGroup}>
         <TextInput
-          placeholder="URI imagen"
+          placeholder={t('home.iURI')}
           onChangeText={(value) => handleChangeText('uri', value)}/>
       </View>
 
       <View style={styles.inputGroup}>
         <TextInput
-          placeholder="Título de la receta"
+          placeholder={t('home.iTitulo')}
           onChangeText={(value) => handleChangeText('titulo', value)}/>
       </View>
 
       <View style={styles.inputGroup}>
         <TextInput 
-        placeholder="Descripción" 
+        placeholder={t('home.iDecrip')}
         onChangeText={(value) => handleChangeText('descripcion', value)}/>
       </View>
 
       <View>
         <TextInput 
-        placeholder="Pasos" 
-        multiline = 'true'
+        placeholder={t('home.iPasos')} 
+        multiline = "true"
         style = {{padding: 80}}
         onChangeText={(value) => handleChangeText('pasos', value)}/>
       </View>
 
       <View style={{marginTop: 25}}>
-        <Button title="Crear receta" onPress={() => AddNewFood()} />
+        <Button title={t('home.btnCrearReceta')} onPress={() => AddNewFood()} />
       </View>
     </ScrollView>
   )

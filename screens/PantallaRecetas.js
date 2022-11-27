@@ -2,17 +2,28 @@ import React, { useEffect, useState } from "react";
 import { ScrollView, Button } from 'react-native';
 import firebase from '../database/firebase';
 import { ListItem, Avatar } from 'react-native-elements';
+import { useNavigation } from "@react-navigation/native";
+import { View } from "react-native-web";
+import { useTranslation } from "react-i18next";
+import './i18n'
+import i18next from "./i18n";
 
 
 var idUser = ''
 
 const PantallaRecetas = (props) => {
+    const { t } = useTranslation()
+    const [languaje, setLanguaje] = useState('en')
+
+    
+
    
     const [shouldShow, setShouldShow] = useState(true);
     const [food, setFood] = useState([]) 
     const [usuarios, setUsuarios] = useState([])
    
     useEffect(() =>{
+
         firebase.db.collection('recetas').onSnapshot(querySnapshot => {
             const food = []
 
@@ -71,7 +82,7 @@ const PantallaRecetas = (props) => {
                 
             {shouldShow ? (
                 <Button 
-                title='Crear receta nueva'
+                title={t('home.tRecetaNueva')}
                 onPress={() => props.navigation.navigate('CrearReceta')}
                 />
             ) : null}

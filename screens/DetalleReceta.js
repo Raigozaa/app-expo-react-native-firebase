@@ -3,8 +3,16 @@ import { Text, StyleSheet, ScrollView, Button, View, ActivityIndicator, Image} f
 import { TextInput } from "react-native-gesture-handler";
 import firebase from '../database/firebase';
 import PantallaRecetas from './PantallaRecetas';
+import { useTranslation } from "react-i18next";
+import './i18n'
+import i18next from "./i18n";
 
 const DetalleReceta = (props) => {
+
+    const { t } = useTranslation()
+    const [languaje, setLanguaje] = useState('en')
+
+    
    /* console.log(props.route.params.userId) */
 
     const initialState = {
@@ -58,15 +66,18 @@ const DetalleReceta = (props) => {
 
             //console.log(props.route.params)
             //console.log('STATUS', shouldShow)
-            setUsuarios(usuarios)
+            //console.log(props.route.params.usuarioId)
 
             setShouldShow(!shouldShow)
+            //console.log(shouldShow)
 
             for (let i = 0; i < usuarios.length; i++) {
                 if ((usuarios[i].id == props.route.params.usuarioId) && (usuarios[i].rol == 'Admin') ) {
                     setShouldShow(shouldShow)
-                    //console.log(props.route.params.usuarioId, usuarios[i])
                 } 
+                console.log(usuarios[i].id)
+                console.log(props.route.params.usuarioId)
+                console.log(" ")
             }
             
         })
@@ -119,7 +130,7 @@ const DetalleReceta = (props) => {
             {shouldShow ? (
                 <View style={styles.inputGroup}>
                     <TextInput 
-                    placeholder="URI imagen"
+                    placeholder={t('home.iURI')}
                     value={food.uri}
                     onChangeText={(value) => handleChangeText('uri', value)}/>
                 </View>
@@ -128,7 +139,7 @@ const DetalleReceta = (props) => {
             {shouldShow ? (
                 <View style={styles.inputGroup}>
                     <TextInput
-                    placeholder="Título de la receta"
+                    placeholder={t('home.iTitulo')}
                     value={food.titulo}
                     onChangeText={(value) => handleChangeText('titulo', value)}/>
                 </View>
@@ -137,7 +148,7 @@ const DetalleReceta = (props) => {
             {shouldShow ? (
                 <View style={styles.inputGroup}>
                     <TextInput 
-                    placeholder="Descripción"
+                    placeholder={t('home.iDecrip')}
                     value={food.descripcion}
                     onChangeText={(value) => handleChangeText('descripcion', value)}/>
                 </View>
@@ -146,7 +157,7 @@ const DetalleReceta = (props) => {
             {shouldShow ? (
                 <View>
                     <TextInput 
-                    placeholder="Pasos"
+                    placeholder={t('home.iPasos')} 
                     multiline = 'true'
                     style = {{padding: 80}}
                     value={food.pasos}
@@ -156,13 +167,13 @@ const DetalleReceta = (props) => {
             
             {shouldShow ? (
                 <View style={{padding: 20}}>
-                    <Button color='#19AC52' title="Actualizar receta" onPress={() => updateFood()} />
+                    <Button color='#19AC52' title={t('home.btnAct')}  onPress={() => updateFood()} />
                 </View>
             ) : null}
 
             {shouldShow ? (
                 <View style={{padding: 20}}>
-                    <Button color='#E37399' title="Eliminar receta" onPress={() => deleteFood()} />
+                    <Button color='#E37399' title={t('home.btnBorr')} onPress={() => deleteFood()} />
                 </View>
             ) : null}
         

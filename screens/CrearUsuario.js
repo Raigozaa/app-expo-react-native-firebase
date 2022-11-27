@@ -2,9 +2,17 @@ import { StatusBar } from "expo-status-bar"
 import React, { useState } from 'react';
 import firebase from '../database/firebase';
 import { StyleSheet, Text, View, TextInput, Button } from "react-native"
+import { useTranslation } from "react-i18next";
+import './i18n'
+import i18next from "./i18n";
 
 
 const CrearUsuario = (props) => {
+
+    const { t } = useTranslation()
+    const [languaje, setLanguaje] = useState('en')
+
+
 
     const [state, setState] = useState({
         usuario: '',
@@ -19,10 +27,10 @@ const CrearUsuario = (props) => {
 
     const AddNewUser = async () => {
         if (state.usuario == '') {
-            alert('Por favor llenar campo usuario')
+            alert(t('home.alUser'))
 
         } else if (state.contrasena == '') {
-            alert('Por favor llenar campo contraseña')
+            alert(t('home.alPassw'))
         
         } else {
             await firebase.db.collection('usuarios').add({
@@ -31,7 +39,7 @@ const CrearUsuario = (props) => {
                 rol: 'user'
             })
 
-            alert('Registro realizado exitosamente!')
+            alert(t('home.alExit'))
             props.navigation.navigate('IniciarSesion')
         }
     }
@@ -39,14 +47,14 @@ const CrearUsuario = (props) => {
 
     return(
         <View style={styles.container}>
-            <Text style={styles.titulo}>Regístrate ahora</Text>
-            <Text style={styles.subTittle}>¡Las mejores recetas!</Text>
+            <Text style={styles.titulo}>{t('home.tRegistro')}</Text>
+            <Text style={styles.subTittle}>{t('home.tText')}</Text>
 
-            <TextInput placeholder="Usuario ej: juan20" style={styles.textInput} onChangeText={(value) => handleChangeText('usuario', value)} />
-            <TextInput placeholder="Contraseña" style={styles.textInput} onChangeText={(value) => handleChangeText('contrasena', value)} />
+            <TextInput placeholder={t('home.iUserInicio')} style={styles.textInput} onChangeText={(value) => handleChangeText('usuario', value)} />
+            <TextInput placeholder={t('home.iPassInicio')} style={styles.textInput} onChangeText={(value) => handleChangeText('contrasena', value)} />
             
             
-            <Button title='Registrarme' color='green' onPress={() => AddNewUser()} />
+            <Button title={t('home.btnRegistrar')} color='green' onPress={() => AddNewUser()} />
             
 
 
@@ -74,6 +82,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         padding: 5,
         marginBottom: 20,
+        justifyContent: "center",
     },
     subTittle: {
         fontSize: 20,
