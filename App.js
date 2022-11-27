@@ -16,7 +16,6 @@ import PantallaRecetas from './screens/PantallaRecetas'
 import CrearReceta from './screens/CrearReceta'
 import DetalleReceta from './screens/DetalleReceta'
 
-//{t('home.btnCrearC')} t('home.btnCrearC')
 
 
 function MyStack(){
